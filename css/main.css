@@ -1096,7 +1096,6 @@ header .row {
 }
 header .top-bar {
 	display: block;
-	background: #000000;
 	min-width: 220px;
 	min-height: 66px;
 	position: absolute;
@@ -1229,7 +1228,7 @@ header .logo a {
 
 /* dropdown nav */
 .main-navigation {
-	background: #000000;
+	background: #474e68;
 	padding: 24px 30px 42px;
 	margin: 0;
 	width: 100%;
@@ -1257,7 +1256,7 @@ header .logo a {
 }
 .main-navigation li.current > a {
 	background: none;
-	color: #474E68;
+	color: #ffffffb3;
 }
 
 /**
@@ -1382,19 +1381,10 @@ header .logo a {
 	font-size: 1.3rem;
 	text-transform: uppercase;
 	letter-spacing: .25rem;
+	width: 27rem;
 }
 .intro-content .button:hover, .intro-content .button:focus {
 	border-color: #404258;
-}
-.intro-content .button::after {
-	display: inline-block;
-	content: "\f107";
-	font-family: fontAwesome;
-	font-size: 1.6rem;
-	line-height: inherit;
-	text-align: center;
-	position: relative;
-	left: 1.2rem;
 }
 
 .intro-social {
