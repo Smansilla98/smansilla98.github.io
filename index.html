@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santiago Mansilla | Desarrollador Fullstack</title>
+    <style>
+        :root {
+            --primary-color: #153e56;
+            --accent-color: #2c5d82;
+            --text-color: #333;
+            --light-text: #6c757d;
+            --bg-light: #ffffff;
+            --bg-dark: #153e56;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica', sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+        
+        .sidebar {
+            width: 30%;
+            background-color: var(--bg-dark);
+            color: white;
+            padding: 40px 25px;
+        }
+        
+        .main-content {
+            width: 70%;
+            padding: 40px 30px;
+            background-color: var(--bg-light);
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            margin: 0 auto 30px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .sidebar .section-title {
+            color: white;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .main-content .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item i {
+            margin-right: 15px;
+            font-size: 1.2em;
+            width: 20px;
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .education-item {
+            margin-bottom: 25px;
+        }
+        
+        .date {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 5px;
+        }
+        
+        .institution {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        
+        .degree {
+            margin-bottom: 5px;
+        }
+        
+        .education-detail {
+            margin-left: 20px;
+        }
+        
+        .skills-list li, .languages-list li {
+            margin-bottom: 10px;
+            list-style-type: none;
+        }
+        
+        .skills-list li::before, .languages-list li::before {
+            content: "•";
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .profile-text {
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        
+        .name-title {
+            margin-bottom: 40px;
+        }
+        
+        .name {
+            font-size: 2.8em;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .job-title {
+            font-size: 1.6em;
+            color: var(--light-text);
+            text-transform: uppercase;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+        
+        .separator {
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 15px 0 25px;
+        }
+        
+        .experience-item {
+            margin-bottom: 40px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .experience-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            z-index: 1;
+        }
+        
+        .experience-item::after {
+            content: "";
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 20px);
+            background-color: #e0e0e0;
+        }
+        
+        .experience-item:last-child::after {
+            display: none;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .company-title {
+            font-size: 1.3em;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .job-date {
+            color: var(--light-text);
+            font-style: italic;
+        }
+        
+        .job-position {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .team-title {
+            font-weight: 600;
+            color: var(--accent-color);
+            margin: 15px 0 8px;
+        }
+        
+        .job-duties {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .job-duties li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .job-duties li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .cert-item {
+            margin-bottom: 15px;
+        }
+        
+        .cert-title {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .cert-date {
+            color: var(--light-text);
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .sidebar, .main-content {
+                width: 100%;
+            }
+            
+            .job-header {
+                flex-direction: column;
+            }
+            
+            .job-date {
+                margin-top: 5px;
+            }
+        }
+    </style>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profile-img"><img src="./perfil.png" style="height: 100%;"></div>
+        
+        <h2 class="section-title">CONTACTO</h2>
+        <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <a href="https://api.whatsapp.com/send?phone=5491126038245">+5491126038245</a>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:samansilla.998@gmail.com">samansilla.998@gmail.com</a>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Gerli, Buenos Aires, Argentina</span>
+        </div>
+        <!--<div class="contact-item">
+            <i class="fas fa-globe"></i>
+            <a href="https://smansilla98.github.io" target="_blank">smansilla98.github.io</a>
+        </div>-->
+        <div class="contact-item">
+            <i class="fab fa-linkedin"></i>
+            <a href="https://www.linkedin.com/in/-santiagomansilla/" target="_blank">LinkedIn</a>
+        </div>
+        
+        <h2 class="section-title">EDUCACIÓN</h2>
+        <div class="education-item">
+            <div class="date">2020</div>
+            <div class="institution">DePc Suite</div>
+            <div class="degree">Desarrollo Fullstack</div>
+        </div>
+        <div class="education-item">
+            <div class="date">2019</div>
+            <div class="institution">Plataforma 5</div>
+            <div class="degree">Desarrollo Frontend</div>
+        </div>
+        <div class="education-item">
+            <div class="date">2016</div>
+            <div class="institution">Adobe</div>
+            <div class="degree">Paquete completo Adobe</div>
+        </div>
+        
+        <h2 class="section-title">HABILIDADES</h2>
+        <ul class="skills-list">
+            <li>HTML5/CSS3</li>
+            <li>JavaScript (ES6+)</li>
+            <li>Vue.js, jQuery, AJAX</li>
+            <li>PHP, Laravel</li>
+            <li>MySQL, PostgreSQL, SQL Server</li>
+            <li>API REST, Microservicios</li>
+            <li>Docker</li>
+            <li>PrestaShop, WordPress</li>
+            <li>Adobe Creative Suite</li>
+            <li>Figma</li>
+        </ul>
+        
+        <h2 class="section-title">IDIOMAS</h2>
+        <ul class="languages-list">
+            <li>Español - Nativo</li>
+            <li>Inglés - Intermedio</li>
+        </ul>
+
+        <h2 class="section-title">Sobre mí</h2>
+        <p>Además de desempeñarme como Desarrollador Fullstack, soy percusionista, docente y diseñador gráfico en la Escuela Popular de Percusión "La Chilinga", una institución reconocida fundada en 1995. Formo parte de la escuela desde 2019, y desde 2023 integro su equipo docente, participando además en presentaciones junto a artistas de primer nivel nacional.</p>
+    </div>
+    
+    <div class="main-content">
+        <div class="name-title">
+            <h1 class="name">SANTIAGO MANSILLA</h1>
+            <h2 class="job-title">Desarrollador Fullstack</h2>
+            <div class="separator"></div>
+        </div>
+        
+        <h2 class="section-title">PERFIL</h2>
+        <p class="profile-text">
+            Desarrollador Fullstack con más de 4 años de experiencia especializado en el desarrollo de soluciones web con PHP, JavaScript, bases de datos SQL y microservicios. Enfocado en la creación de interfaces intuitivas y funcionales que mejoran la experiencia del usuario final, con capacidad para adaptarme rápidamente a nuevas tecnologías y entornos de trabajo. Comprometido con el aprendizaje continuo y la mejora constante de mis habilidades técnicas.
+        </p>
+        
+        <h2 class="section-title">EXPERIENCIA LABORAL</h2>
+        
+        <div class="experience-item">
+            <div class="job-header">
+                <div class="company-title">De Campo a Campo</div>
+                <div class="job-date">Julio 2024 - Actualmente</div>
+            </div>
+            <div class="job-position">Desarrollador Backend</div>
+            
+            <div class="team-title">Equipo Soporte:</div>
+            <ul class="job-duties">
+                <li>Desarrollo y mejora de soluciones mediante PHP nativo</li>
+                <li>Creación de módulos con PHP, Ajax, JavaScript y jQuery para mejorar la experiencia de usuarios finales</li>
+                <li>Implementación de microservicios, API REST y Docker</li>
+                <li>Optimización de código para incrementar el rendimiento de aplicaciones</li>
+            </ul>
+            
+            <div class="team-title">Equipo Proyectos:</div>
+            <ul class="job-duties">
+                <li>Investigación, desarrollo e implementación de nuevos requerimientos</li>
+                <li>Creación de soluciones innovadoras para mejorar la experiencia de usuario</li>
+                <li>Implementación de mejoras para incrementar el valor del producto</li>
+            </ul>
+        </div>
+        
+        <div class="experience-item">
+            <div class="job-header">
+                <div class="company-title">Simmons Argentina</div>
+                <div class="job-date">Junio 2023 - Abril 2024</div>
+            </div>
+            <div class="job-position">Desarrollador Fullstack</div>
+            
+            <div class="team-title">Equipo de Sistemas:</div>
+            <ul class="job-duties">
+                <li>Desarrollo y mejora de soluciones utilizando PHP nativo</li>
+                <li>Creación e implementación de módulos con PHP, PostgreSQL, JavaScript y jQuery</li>
+                <li>Implementación de funcionalidades para mejorar la experiencia de usuario final</li>
+            </ul>
+        </div>
+        
+        <div class="experience-item">
+            <div class="job-header">
+                <div class="company-title">Apernet</div>
+                <div class="job-date">Abril 2021 - Junio 2023</div>
+            </div>
+            <div class="job-position">Desarrollador Fullstack</div>
+            
+            <div class="team-title">Equipo de Implementaciones:</div>
+            <ul class="job-duties">
+                <li>Desarrollo de soluciones web basadas en requerimientos de clientes gestionados mediante Jira</li>
+                <li>Implementación de metodologías ágiles para la gestión de proyectos</li>
+                <li>Maquetación y desarrollo de funcionalidades utilizando Prestashop, PHP, JavaScript, jQuery, Vue.js y CSS</li>
+            </ul>
+            
+            <div class="team-title">Equipo de Producto:</div>
+            <ul class="job-duties">
+                <li>Desarrollo de módulos para optimización de tiendas online activas</li>
+                <li>Adaptación de nuevos maquetados y mejora continua del código existente</li>
+                <li>Participación activa en proyectos para clientes como Tienda Quiero, Tienda Supervielle y Tengo (Ecuador)</li>
+            </ul>
+        </div>
+        
+        <div class="experience-item">
+            <div class="job-header">
+                <div class="company-title">Cuenta Digital</div>
+                <div class="job-date">Junio 2020 - Abril 2021</div>
+            </div>
+            <div class="job-position">Desarrollador Fullstack</div>
+            
+            <ul class="job-duties">
+                <li>Desarrollo e implementación de mejoras en sistema interno empresarial utilizando Laravel</li>
+                <li>Creación de funcionalidades para automatización de acciones y gestión de pedidos</li>
+                <li>Soporte técnico y asistencia a clientes para resolución de problemas y consultas</li>
+                <li>Diseño y desarrollo de estrategias de branding empresarial</li>
+            </ul>
+        </div>
+        
+        <div class="experience-item">
+            <div class="job-header">
+                <div class="company-title">Transportes José Beraldi</div>
+                <div class="job-date">Diciembre 2017 - Noviembre 2019</div>
+            </div>
+            <div class="job-position">Administrativo</div>
+            
+            <ul class="job-duties">
+                <li>Gestión administrativa de gomería: control de stock y seguimiento de cambios en unidades</li>
+                <li>Análisis de datos para optimización de procesos internos</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
